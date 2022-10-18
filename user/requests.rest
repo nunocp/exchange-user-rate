@@ -1,0 +1,62 @@
+### User Service
+
+### Test API availability
+GET http://localhost:3000
+
+### Create user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "username": "John",
+  "password": "pass123"
+}
+
+### Login user
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "username": "John",
+  "password": "pass123"
+}
+
+### Refresh user JWT access token
+POST http://localhost:3000/user/token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjYxNDkyNzc2fQ.5psIVYEZBPIFDNAuWgj5THmIJjDUFSUu6GcCw5udd34" 
+}
+
+### Logout user
+DELETE http://localhost:3000/user/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjYxNDkyNzc2fQ.5psIVYEZBPIFDNAuWgj5THmIJjDUFSUu6GcCw5udd34"
+}
+
+### Update user info
+PUT http://localhost:3000/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjYxNTA1MDAxLCJleHAiOjE2NjE1MDU5MDF9.lRzWr68lIVh_vxrkeC0hME3jv4VNhAYYN0STy1YwGPU
+
+{
+  "username": "newJohn",
+  "password": "newPass123",
+  "exchangeSpread": 0.2
+}
+
+### Get user info
+GET http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjYxNTE1NTY3LCJleHAiOjE2NjE1MTY0Njd9.80DmhYWQDs7KSa4t8odIUnkc7xOFd3Tu2xyYJVK2jqw
+
+### Delete user
+DELETE http://localhost:3000/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjYxNTA1MDAxLCJleHAiOjE2NjE1MDU5MDF9.lRzWr68lIVh_vxrkeC0hME3jv4VNhAYYN0STy1YwGPU
+
+{
+  "password": "pass123"
+}

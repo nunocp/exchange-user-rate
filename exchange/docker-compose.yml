@@ -1,0 +1,15 @@
+services:
+  exchange:
+    image: node:16-bullseye
+    restart: on-failure
+    build:
+      context: ./
+    volumes:
+      - .:/app
+    ports:
+      - 3001:3001
+
+networks:
+  default:
+    external:
+      name: exchange-user-rate

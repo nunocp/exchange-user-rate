@@ -34,7 +34,7 @@ The **User** service provides a 100% independent API to make CRUD operations on 
 
 The **Exchange** service provides a websocket endpoint where users can connect to periodically receive exchange rates for the pair BTC/USD based on their specific spread configuration stored in the User service.
 
-- The service polls CoinMarketCap's API periodically every 4.5 minutes by default (because of the request limit of the current free plan's API key provided on `.env`) to get the reference exchange rate for the coin pair but sends data to connected users much faster (10 seconds by default). The polling frequency to the external provider can be more instantaneous if used with a paid plan's API key.
+- The service polls CoinMarketCap's API periodically every 4.5 minutes by default (because of the request limit of the current free plan's API key provided on `.env`) to get the reference exchange rate for the coin pair but sends data to connected users much faster (10 seconds by default). The polling frequency to the external provider can be faster if used with a paid plan's API key.
 
 - Given the volatility of the data handled by this microservice, when the user connects to the Exchange, the service requests to the User service their spread value and caches it in memory only, using it to make the calculation necessary to send the final rate value to the user.
 
@@ -83,5 +83,6 @@ docker-compose up
 
 After all services are built and sucessfully running, the following endpoints will be available:
 
-User REST API: http://localhost:3000\
+User REST API: http://localhost:3000
+
 Exchange Rate websocket: ws://localhost:3001

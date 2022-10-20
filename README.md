@@ -19,10 +19,12 @@ Index:
 
 ## How It Works
 
-> To make bootstraping easier, both services have default `.env` files with all required fields already set.\
+> To make bootstraping easier, both services have default `.env` files with all required fields already set, including a free API key.\
 > These files were also removed from the `.gitignore` file.
 
 **Warning: The default values are set based on the limits of CoinMarketCap's free plan, so take a look at `.env` for what can be easily customized.**
+
+### User Service
 
 The **User** service provides a 100% independent API to make CRUD operations on user records and handles JWT authentication. It stores data in a MySQL container.
 
@@ -31,6 +33,8 @@ The **User** service provides a 100% independent API to make CRUD operations on 
 - All endpoints that expect a logged user must be requested with an Authorization header providing the access token.
 
 - To change a user's exchange rate spread, update the exchangeSpread using the Update User endpoint.
+
+### Exchange Service
 
 The **Exchange** service provides a websocket endpoint where users can connect to periodically receive exchange rates for the pair BTC/USD based on their specific spread configuration stored in the User service.
 
@@ -65,7 +69,6 @@ If authenticated, the user will start receiving updates for their calculated ind
 
 Dependencies:
 
-- Node.js
 - Docker (Compose)
 
 First, to allow the Exchange service to communicate with the User service, we need to first create a shared Docker network. The "docker-compose.yml" files expect one network called `exchange-user-rate`, so do:
